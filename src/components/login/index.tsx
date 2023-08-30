@@ -12,24 +12,29 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { PatternFormat } from 'react-number-format';
 
 
-// TODO remove, this demo shouldn't need to reset the theme.
-const defaultTheme = createTheme();
 
-export default function SignIn() {
+export default function LoginPage() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const dataToSend = {
+      usuario: data.get("usuario"),
+      senha: data.get("senha"),
   };
+  
+ const {senha, usuario} = dataToSend
+ if (senha?.length < 6) {
+  alert("a senha deve ter pelo menos 6 caracteres");
+ } else {
+  alert("enviou")
+ }
+  }
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -47,8 +52,11 @@ export default function SignIn() {
             Entrar
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-            <TextField
-              margin="normal"
+            <PatternFormat 
+             format="###.###.###-##"
+             customInput={TextField}
+             mask={"_"}
+             margin="normal"
               required
               fullWidth
               id="usuario"
@@ -56,7 +64,8 @@ export default function SignIn() {
               name="usuario"
               autoComplete="usuario"
               autoFocus
-            />
+             />           
+            
             <TextField
               margin="normal"
               required
@@ -95,6 +104,6 @@ export default function SignIn() {
         </Box>
         
       </Container>
-    </ThemeProvider>
+ 
   );
 }
