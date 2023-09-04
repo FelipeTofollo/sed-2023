@@ -13,10 +13,11 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { PatternFormat } from 'react-number-format';
-
+import {  useDispatch, userSlice } from '@/lib/redux';
 
 
 export default function LoginPage() {
+  const dispatch = useDispatch()
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -26,12 +27,15 @@ export default function LoginPage() {
   };
   
  const {senha, usuario} = dataToSend
- if (senha?.length < 6) {
+ if(!senha) {
+  alert("Por favor digite uma senha");
+ } else 
+ if (senha.length < 6) {
   alert("a senha deve ter pelo menos 6 caracteres");
  } else {
-  alert("enviou")
+  dispatch(userSlice.actions.loginUser(dataToSend));
  }
-  }
+  };
 
   return (
     

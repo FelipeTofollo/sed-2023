@@ -1,4 +1,4 @@
-"useclient";
+"use client";
 import * as React from 'react';
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
@@ -7,7 +7,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { ColorModeContext } from '@/app/theme-provider';
 
-export default function ToogleTheme() {const theme = useTheme();
+export default function ToggleTheme() {const theme = useTheme();
     const colorMode = React.useContext(ColorModeContext);
     return (
       <Box
