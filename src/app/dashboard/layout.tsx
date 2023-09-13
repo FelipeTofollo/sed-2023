@@ -1,16 +1,11 @@
-import Header from "@/components/header"
-import SideMenu from "@/components/sideMenu"
+import Dashboard from "@/components/dashboard/Dashboard"
+
   
-export default function RootLayout({
+export default function DasboardLayout({
     children,
   }: {
     children: React.ReactNode
   }) {
-    return (
-      <div>
-        <Header/>
-        <SideMenu/>
-        {children}
-      </div>
-    )
+    return <Dashboard>{children}</Dashboard>
+    
   }

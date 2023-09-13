@@ -1,14 +1,11 @@
+import Dashboard from '@/components/dashboard/Dashboard';
 import React from 'react'
-import toogleThemeComponent from '@/components/toogleTheme'
-import ToogleTheme from '@/components/toogleTheme'
 
-export default function Dashboard() {
+
+
+export default function DashboardPage() {
   return (
-    <div>
-       <h1>Dashboard</h1>
-    <ToogleTheme />
-    </div>
-   
+    <div>Dashboard</div>
   )
 }
 
