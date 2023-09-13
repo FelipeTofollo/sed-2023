@@ -16,8 +16,11 @@ export const userSlice = createSlice({
     loginUser: (state, action) => {
       state.usuario = action.payload.usuario;
       state.senha = action.payload.senha;
-
     },
+    logoutUser: (state) => {
+      state.usuario="";
+      state.senha="";
+    }
   },
 
 });

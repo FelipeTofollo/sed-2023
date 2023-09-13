@@ -14,10 +14,12 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { PatternFormat } from 'react-number-format';
 import {  useDispatch, userSlice } from '@/lib/redux';
+import { useRouter } from "next/navigation";
 
 
 export default function LoginPage() {
   const dispatch = useDispatch()
+  const router = useRouter();
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -34,6 +36,7 @@ export default function LoginPage() {
   alert("a senha deve ter pelo menos 6 caracteres");
  } else {
   dispatch(userSlice.actions.loginUser(dataToSend));
+  router.push("/dashboard")
  }
   };
 
